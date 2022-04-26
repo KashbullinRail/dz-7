@@ -115,16 +115,20 @@ public class ExampleSeven {
     public static void stringValidation(String s) {
         char[] letter1 = s.toCharArray();
         char[] letter2 = s.toCharArray();
-        exit:
+        boolean repeat = false;
         for (int i = 0; i < s.length(); i++) {
             for (int k = i + 1; k < s.length(); k++) {
                 int kk = k + 1;
                 if (letter2[i] == letter1[k]) {
                     System.out.println("Обнаружен дубль символа - " + "'" + letter1[k] + "'");
                     System.out.println("Номер символа по счету - " + kk);
-                    break exit;
+                    repeat = true;
+                    k = i = s.length();
                 }
             }
+        }
+        if (repeat == false) {
+            System.out.println("Повторяющихся символов в строке нет");
         }
     }
 
@@ -158,6 +162,5 @@ public class ExampleSeven {
         // Задание 4
         printExercise4();
         stringValidation("aabccddefgghiijjkk");
-
     }
 }
